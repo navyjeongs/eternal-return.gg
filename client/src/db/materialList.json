@@ -1,0 +1,195 @@
+{
+"material" : [
+         {
+      "name": "나뭇가지",
+      "heal": 0,
+      "count": 1,
+      "code": 108101,
+      "grade": "common"
+    },
+    {
+      "name": "고기",
+      "heal": 300,
+      "count": 1,
+      "code": 301111,
+      "grade": "common"
+    },
+    {
+      "name": "돌멩이",
+      "heal": 0,
+      "count": 2,
+      "code": 112101,
+      "grade": "common"
+    },
+    {
+      "name": "알코올",
+      "heal": 0,
+      "count": 2,
+      "code": 401111,
+      "grade": "common"
+    },
+    {
+      "name": "마늘",
+      "heal": 300,
+      "count": 1,
+      "code": 301106,
+      "grade": "common"
+    },
+    {
+      "name": "빵",
+      "heal": 300,
+      "count": 1,
+      "code": 301110,
+      "grade": "common"
+    },
+
+    {
+      "name": "달걀",
+      "heal": 300,
+      "count": 1,
+      "code": 301112,
+      "grade": "common"
+    },
+
+    {
+      "name": "생라면",
+      "heal": 300,
+      "count": 1,
+      "code": 301113,
+      "grade": "common"
+    },
+    {
+      "name": "약초",
+      "heal": 300,
+      "count": 1,
+      "code": 301116,
+      "grade": "common"
+    },
+    {
+      "name": "초콜릿",
+      "heal": 300,
+      "count": 1,
+      "code": 301119,
+      "grade": "common"
+    },
+    {
+      "name": "감자",
+      "heal": 300,
+      "count": 2,
+      "code": 301102,
+      "grade": "common"
+    },
+    {
+      "name": "대구",
+      "heal": 300,
+      "count": 2,
+      "code": 301104,
+      "grade": "common"
+    },
+    {
+      "name": "레몬",
+      "heal": 300,
+      "count": 2,
+      "code": 301105,
+      "grade": "common"
+    },
+    {
+      "name": "붕어",
+      "heal": 300,
+      "count": 2,
+      "code": 301109,
+      "grade": "common"
+    },
+    {
+      "name": "라이터",
+      "heal": 0,
+      "count": 1,
+      "code": 401107,
+      "grade": "common"
+    },
+    {
+      "name": "위스키",
+      "heal": 450,
+      "count": 1,
+      "code": 302104,
+      "grade": "common"
+    },
+    {
+      "name": "커피콩",
+      "heal": 380,
+      "count": 1,
+      "code": 302106,
+      "grade": "common"
+    },
+    {
+      "name": "탄산수",
+      "heal": 380,
+      "count": 1,
+      "code": 302107,
+      "grade": "common"
+    },
+    {
+      "name": "꿀",
+      "heal": 250,
+      "count": 1,
+      "code": 302101,
+      "grade": "common"
+    },
+    {
+      "name": "물",
+      "heal": 225,
+      "count": 1,
+      "code": 302102,
+      "grade": "common"
+    },
+    {
+      "name": "얼음",
+      "heal": 200,
+      "count": 1,
+      "code": 302103,
+      "grade": "common"
+    },
+    {
+      "name": "우유",
+      "heal": 200,
+      "count": 1,
+      "code": 302108,
+      "grade": "common"
+    },
+    {
+      "name": "꽃",
+      "heal": 0,
+      "count": 1,
+      "code": 205102,
+      "grade": "common"
+    },
+    {
+      "name": "오일",
+      "heal": 0,
+      "count": 1,
+      "code": 401112,
+      "grade": "common"
+    },
+    {
+      "name": "상자",
+      "heal": 0,
+      "count": 1,
+      "code": 205107,
+      "grade": "common"
+    },
+    {
+      "name": "유리병",
+      "heal": 0,
+      "count": 1,
+      "code": 112104,
+      "grade": "common"
+    },
+    {
+      "name": "캔",
+      "heal": 0,
+      "count": 1,
+      "code": 401120,
+      "grade": "common"
+    }
+]
+}

@@ -1,0 +1,679 @@
+{
+"hp" : [
+    {
+      "name": "구급상자",
+      "hp": 1000,
+      "needItem": ["불가"],
+      "count": 2,
+      "code": 301324,
+      "grade": "epic"
+    },
+    {
+      "name": "대환단",
+      "hp": 850,
+      "needItem": ["불경", "생명의 나무"],
+      "count": 3,
+      "code": 301329,
+      "grade": "epic"
+    },
+    {
+      "name": "일레븐 세트",
+      "hp": 750,
+      "needItem": ["라이터", "오일", "감자", "빵", "고기"],
+      "count": 2,
+      "code": 301403,
+      "grade": "epic"
+    },
+    {
+      "name": "성수",
+      "hp": 750,
+      "needItem": ["미스릴", "물"],
+      "count": 3,
+      "code": 301305,
+      "grade": "epic"
+    },
+    {
+      "name": "피쉬 앤 칩스",
+      "hp": 700,
+      "needItem": ["대구", "라이터", "오일", "감자"],
+      "count": 2,
+      "code": 301401,
+      "grade": "epic"
+    },
+    {
+      "name": "초코칩 쿠키",
+      "hp": 622,
+      "needItem": ["초콜릿", "우유", "나뭇가지"],
+      "count": 2,
+      "code": 301311,
+      "grade": "rare"
+    },
+    {
+      "name": "초코파이 상자",
+      "hp": 622,
+      "needItem": ["상자", "초콜릿", "빵"],
+      "count": 2,
+      "code": 301312,
+      "grade": "rare"
+    },
+    {
+      "name": "허니버터",
+      "hp": 622,
+      "needItem": ["우유", "꿀", "나뭇가지"],
+      "count": 3,
+      "code": 301315,
+      "grade": "rare"
+    },
+    {
+      "name": "버터 감자구이",
+      "hp": 622,
+      "needItem": ["감자", "우유", "나뭇가지"],
+      "count": 3,
+      "code": 301325,
+      "grade": "rare"
+    },
+    {
+      "name": "스크램블 에그",
+      "hp": 575,
+      "needItem": ["라이터", "오일", "달걀"],
+      "count": 2,
+      "code": 301309,
+      "grade": "rare"
+    },
+    {
+      "name": "볶음라면",
+      "hp": 575,
+      "needItem": ["라이터", "오일", "생라면"],
+      "count": 2,
+      "code": 301327,
+      "grade": "rare"
+    },
+    {
+      "name": "생선까스",
+      "hp": 550,
+      "needItem": ["감자", "나뭇가지", "우유"],
+      "count": 1,
+      "code": 301326,
+      "grade": "rare"
+    },
+    {
+      "name": "모카빵",
+      "hp": 550,
+      "needItem": ["알코올", "커피콩", "빵"],
+      "count": 2,
+      "code": 301308,
+      "grade": "rare"
+    },
+    {
+      "name": "후라이드 치킨",
+      "hp": 550,
+      "needItem": ["라이터", "오일", "고기"],
+      "count": 2,
+      "code": 301316,
+      "grade": "rare"
+    },
+    {
+      "name": "힐링 포션",
+      "hp": 550,
+      "needItem": ["유리병", "꽃", "약초"],
+      "count": 2,
+      "code": 301317,
+      "grade": "rare"
+    },
+    {
+      "name": "생일 케이크",
+      "hp": 550,
+      "needItem": ["달걀", "레몬", "빵"],
+      "count": 2,
+      "code": 301330,
+      "grade": "rare"
+    },
+    {
+      "name": "마늘라면",
+      "hp": 550,
+      "needItem": ["마늘", "라이터", "생라면", "물"],
+      "count": 2,
+      "code": 301331,
+      "grade": "rare"
+    },
+    {
+      "name": "감자튀김",
+      "hp": 550,
+      "needItem": ["라이터", "오일", "감자"],
+      "count": 1,
+      "code": 301302,
+      "grade": "rare"
+    },
+    {
+      "name": "햄버거",
+      "hp": 550,
+      "needItem": ["빵", "고기"],
+      "count": 1,
+      "code": 301226,
+      "grade": "uncommon"
+    },
+    {
+      "name": "술빵",
+      "hp": 525,
+      "needItem": ["알코올", "빵", "물"],
+      "count": 2,
+      "code": 301319,
+      "grade": "rare"
+    },
+    {
+      "name": "구운 감자",
+      "hp": 525,
+      "needItem": ["라이터", "감자", "돌멩이"],
+      "count": 3,
+      "code": 301303,
+      "grade": "rare"
+    },
+    {
+      "name": "구운 붕어",
+      "hp": 525,
+      "needItem": ["붕어", "라이터", "돌멩이"],
+      "count": 3,
+      "code": 301304,
+      "grade": "rare"
+    },
+    {
+      "name": "탕약",
+      "hp": 525,
+      "needItem": ["라이터", "약초", "물"],
+      "count": 3,
+      "code": 301314,
+      "grade": "rare"
+    },
+    {
+      "name": "삶은 달걀",
+      "hp": 525,
+      "needItem": ["라이터", "달걀", "물"],
+      "count": 2,
+      "code": 301318,
+      "grade": "rare"
+    },
+    {
+      "name": "냉면",
+      "hp": 525,
+      "needItem": ["얼음", "생라면", "물"],
+      "count": 2,
+      "code": 301328,
+      "grade": "rare"
+    },
+    {
+      "name": "매운탕",
+      "hp": 525,
+      "needItem": ["라이터", "대구", "물"],
+      "count": 2,
+      "code": 301301,
+      "grade": "rare"
+    },
+    {
+      "name": "스테이크",
+      "hp": 500,
+      "needItem": ["라이터", "돌멩이", "고기"],
+      "count": 2,
+      "code": 301323,
+      "grade": "rare"
+    },
+    {
+      "name": "뜨거운 라면",
+      "hp": 500,
+      "needItem": ["라이터", "생라면", "물"],
+      "count": 2,
+      "code": 301307,
+      "grade": "rare"
+    },
+    {
+      "name": "메로구이",
+      "hp": 500,
+      "needItem": ["라이터", "대구", "돌멩이"],
+      "count": 3,
+      "code": 301306,
+      "grade": "rare"
+    },
+    {
+      "name": "대구 간 통조림",
+      "hp": 500,
+      "needItem": ["캔", "대구"],
+      "count": 2,
+      "code": 301204,
+      "grade": "uncommon"
+    },
+    {
+      "name": "마늘 베이컨 말이",
+      "hp": 500,
+      "needItem": ["마늘", "고기"],
+      "count": 2,
+      "code": 301224,
+      "grade": "uncommon"
+    },
+    {
+      "name": "번",
+      "hp": 500,
+      "needItem": ["커피콩", "빵"],
+      "count": 2,
+      "code": 301225,
+      "grade": "uncommon"
+    },
+    {
+      "name": "달걀 생선 필레",
+      "hp": 500,
+      "needItem": ["달걀", "붕어"],
+      "count": 2,
+      "code": 301229,
+      "grade": "uncommon"
+    },
+    {
+      "name": "마늘 꿀절임",
+      "hp": 475,
+      "needItem": ["꿀", "마늘"],
+      "count": 3,
+      "code": 301232,
+      "grade": "uncommon"
+    },
+    {
+      "name": "초코 아이스크림",
+      "hp": 475,
+      "needItem": ["초콜릿", "얼음"],
+      "count": 3,
+      "code": 301237,
+      "grade": "uncommon"
+    },
+    {
+      "name": "버터",
+      "hp": 475,
+      "needItem": ["우유", "나뭇가지"],
+      "count": 1,
+      "code": 301206,
+      "grade": "uncommon"
+    },
+    {
+      "name": "초코파이",
+      "hp": 475,
+      "needItem": ["초콜릿", "빵"],
+      "count": 1,
+      "code": 301216,
+      "grade": "uncommon"
+    },
+    {
+      "name": "꿀 바른 대구살",
+      "hp": 475,
+      "needItem": ["꿀", "대구"],
+      "count": 2,
+      "code": 301201,
+      "grade": "uncommon"
+    },
+    {
+      "name": "마늘빵",
+      "hp": 450,
+      "needItem": ["마늘", "빵"],
+      "count": 3,
+      "code": 301205,
+      "grade": "uncommon"
+    },
+    {
+      "name": "계란빵",
+      "hp": 450,
+      "needItem": ["계란", "빵"],
+      "count": 3,
+      "code": 301234,
+      "grade": "uncommon"
+    },
+    {
+      "name": "붕어빵",
+      "hp": 400,
+      "needItem": ["붕어", "빵"],
+      "count": 6,
+      "code": 301209,
+      "grade": "uncommon"
+    },
+
+    {
+      "name": "난초",
+      "hp": 375,
+      "needItem": ["꽃", "약초"],
+      "count": 2,
+      "code": 301218,
+      "grade": "uncommon"
+    },
+    {
+      "name": "시트러스 케이크",
+      "hp": 375,
+      "needItem": ["레몬", "빵"],
+      "count": 2,
+      "code": 301230,
+      "grade": "uncommon"
+    },
+    {
+      "name": "마늘",
+      "hp": 300,
+      "needItem": [""],
+      "count": 1,
+      "code": 301106,
+      "grade": "common"
+    },
+    {
+      "name": "빵",
+      "hp": 300,
+      "needItem": [""],
+      "count": 1,
+      "code": 301110,
+      "grade": "common"
+    },
+    {
+      "name": "고기",
+      "hp": 300,
+      "needItem": [""],
+      "count": 1,
+      "code": 301111,
+      "grade": "common"
+    },
+    {
+      "name": "달걀",
+      "hp": 300,
+      "needItem": [""],
+      "count": 1,
+      "code": 301112,
+      "grade": "common"
+    },
+
+    {
+      "name": "생라면",
+      "hp": 300,
+      "needItem": [""],
+      "count": 1,
+      "code": 301113,
+      "grade": "common"
+    },
+    {
+      "name": "약초",
+      "hp": 300,
+      "needItem": [""],
+      "count": 1,
+      "code": 301116,
+      "grade": "common"
+    },
+    {
+      "name": "초콜릿",
+      "hp": 300,
+      "needItem": [""],
+      "count": 1,
+      "code": 301119,
+      "grade": "common"
+    },
+    {
+      "name": "감자",
+      "hp": 300,
+      "needItem": [""],
+      "count": 2,
+      "code": 301102,
+      "grade": "common"
+    },
+    {
+      "name": "대구",
+      "hp": 300,
+      "needItem": [""],
+      "count": 2,
+      "code": 301104,
+      "grade": "common"
+    },
+    {
+      "name": "레몬",
+      "hp": 300,
+      "needItem": [""],
+      "count": 2,
+      "code": 301105,
+      "grade": "common"
+    },
+    {
+      "name": "붕어",
+      "hp": 300,
+      "needItem": [""],
+      "count": 2,
+      "code": 301109,
+      "grade": "common"
+    }
+],
+
+    "mp" : [
+    {
+      "name": "캔 콜라",
+      "mp": 1400,
+      "needItem": ["캔", "꿀", "탄산수"],
+      "count": 2,
+      "code": 302309,
+      "grade": "rare"   },
+    {
+      "name": "셀레네의 눈물",
+      "mp": 1080,
+      "needItem": ["운석", "돌멩이", "물"],
+      "count": 3,
+      "code": 302312,
+      "grade": "epic"    },
+    {
+      "name": "뜨거운 꿀물",
+      "mp": 1080,
+      "needItem": ["라이터", "꿀", "물"],
+      "count": 2,
+      "code": 302302,
+      "grade": "rare"    },
+    {
+      "name": "정화수",
+      "mp": 1080,
+      "needItem": ["라이터", "얼음", "물"],
+      "count": 2,
+      "code": 302308,
+      "grade": "rare"    },
+    {
+      "name": "아메리카노",
+      "mp": 1080,
+      "needItem": ["라이터", "커피콩", "물"],
+      "count": 2,
+      "code": 302304,
+      "grade": "rare"    },
+    {
+      "name": "고량주",
+      "mp": 800,
+      "needItem": ["라이터", "유리병", "알코올"],
+      "count": 6,
+      "code": 302301,
+      "grade": "rare"    },
+    {
+      "name": "백일취",
+      "mp": 750,
+      "needItem": ["꽃", "유리병", "알코올"],
+      "count": 6,
+      "code": 302311,
+      "grade": "rare"    },
+    {
+      "name": "깔루아 밀크",
+      "mp": 750,
+      "needItem": ["커피콩", "알코올", "우유"],
+      "count": 4,
+      "code": 302311,
+      "grade": "rare"    },
+    {
+      "name": "위스키 콕",
+      "mp": 600,
+      "needItem": ["위스키", "꿀", "탄산수"],
+      "count": 6,
+      "code": 302307,
+      "grade": "rare"    },
+    {
+      "name": "아이스 커피",
+      "mp": 550,
+      "needItem": ["커피콩", "얼음"],
+      "count": 2,
+      "code": 302206,
+      "grade": "uncommon"    },
+    {
+      "name": "커피 리큐르",
+      "mp": 530,
+      "needItem": ["커피콩", "알코올"],
+      "count": 2,
+      "code": 302208,
+      "grade": "uncommon"    },
+    {
+      "name": "하이볼",
+      "mp": 530,
+      "needItem": ["위스키", "꿀", "탄산수"],
+      "count": 3,
+      "code": 302213,
+      "grade": "uncommon"    },
+    {
+      "name": "카페라테",
+      "mp": 530,
+      "needItem": ["커피콩", "우유"],
+      "count": 2,
+      "code": 302210,
+      "grade": "uncommon"    },
+    {
+      "name": "꿀탄 우유",
+      "mp": 530,
+      "needItem": ["꿀", "우유"],
+      "count": 2,
+      "code": 302211,
+      "grade": "uncommon"    },
+    {
+      "name": "온더락",
+      "mp": 530,
+      "needItem": ["위스키", "얼음"],
+      "count": 2,
+      "code": 302217,
+      "grade": "uncommon"    },
+    {
+      "name": "카우보이",
+      "mp": 530,
+      "needItem": ["위스키", "우유"],
+      "count": 2,
+      "code": 302218,
+      "grade": "uncommon"    },
+    {
+      "name": "핫초코",
+      "mp": 500,
+      "needItem": ["초콜릿", "라이터", "물"],
+      "count": 4,
+      "code": 302310,
+      "grade": "rare"    },
+    {
+      "name": "레몬에이드",
+      "mp": 450,
+      "needItem": ["레몬", "탄산수"],
+      "count": 3,
+      "code": 302202,
+      "grade": "uncommon"    },
+    {
+      "name": "초코 우유",
+      "mp": 450,
+      "needItem": ["우유", "초콜릿"],
+      "count": 3,
+      "code": 302214,
+      "grade": "uncommon"    },
+    {
+      "name": "콜라",
+      "mp": 400,
+      "needItem": ["탄산수", "꿀"],
+      "count": 3,
+      "code": 302209,
+      "grade": "uncommon"    },
+    {
+      "name": "소주",
+      "mp": 400,
+      "needItem": ["알코올", "물"],
+      "count": 2,
+      "code": 302205,
+      "grade": "uncommon"    },
+    {
+      "name": "꿀물",
+      "mp": 400,
+      "needItem": ["꿀", "물"],
+      "count": 2,
+      "code": 302215,
+      "grade": "uncommon"    },
+    {
+      "name": "백주",
+      "mp": 400,
+      "needItem": ["유리병", "알코올"],
+      "count": 3,
+      "code": 302204,
+      "grade": "uncommon"    },
+    {
+      "name": "물병",
+      "mp": 380,
+      "needItem": ["유리병", "물"],
+      "count": 2,
+      "code": 302203,
+      "grade": "uncommon"    },
+    {
+      "name": "칵테일",
+      "mp": 380,
+      "needItem": ["레몬", "위스키"],
+      "count": 4,
+      "code": 302203,
+      "grade": "uncommon"    },
+    {
+      "name": "얼음물",
+      "mp": 350,
+      "needItem": ["얼음", "물"],
+      "count": 2,
+      "code": 302216,
+      "grade": "uncommon"    },
+    {
+      "name": "뜨거운 물",
+      "mp": 350,
+      "needItem": ["라이터", "물"],
+      "count": 2,
+      "code": 302201,
+      "grade": "uncommon"    },
+    {
+      "name": "위스키",
+      "mp": 450,
+      "needItem": [""],
+      "count": 1,
+      "code": 302104,
+      "grade": "common"    },
+    {
+      "name": "커피콩",
+      "mp": 380,
+      "needItem": [""],
+      "count": 1,
+      "code": 302106,
+      "grade": "common"    },
+    {
+      "name": "탄산수",
+      "mp": 380,
+      "needItem": [""],
+      "count": 1,
+      "code": 302107,
+      "grade": "common"    },
+    {
+      "name": "꿀",
+      "mp": 250,
+      "needItem": [""],
+      "count": 1,
+      "code": 302101,
+      "grade": "common"    },
+    {
+      "name": "물",
+      "mp": 225,
+      "needItem": [""],
+      "count": 1,
+      "code": 302102,
+      "grade": "common"    },
+    {
+      "name": "얼음",
+      "mp": 200,
+      "needItem": [""],
+      "count": 1,
+      "code": 302103,
+      "grade": "common"    },
+    {
+      "name": "우유",
+      "mp": 200,
+      "needItem": [""],
+      "count": 1,
+      "code": 302108,
+      "grade": "common"    }
+  ]
+}

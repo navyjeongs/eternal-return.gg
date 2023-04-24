@@ -3,6 +3,6 @@ import { detailGame } from "../controllers/detailGameController.js";
 
 const router = express.Router();
 
-router.get("/api/detail-game/:game-id", detailGame);
+router.get("/api/detailgame/:gameid", detailGame);
 
 export default router;

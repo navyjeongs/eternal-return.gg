@@ -28,12 +28,18 @@ const getUserStats = async (userNum, seasonId) => {
 
     let stats = new Array(4);
 
+    for (let i = 0; i < 4; i++) {
+      stats[i] = { matchingTeamMode: i + 1 };
+    }
+
     const { userStats, code } = res.data;
+
+    console.log(userStats);
 
     if (code === 200) {
       for (let i = 0; i < userStats.length; i++) {
         const { matchingTeamMode, averageRank, averageKills, averageAssistants, averageHunts, top1, top2, top3, totalGames, totalWins } = userStats[i];
-        stats[i] = { matchingTeamMode, averageRank, averageKills, averageAssistants, averageHunts, top1, top2, top3, totalGames, totalWins };
+        stats[matchingTeamMode - 1] = { matchingTeamMode, averageRank, averageKills, averageAssistants, averageHunts, top1, top2, top3, totalGames, totalWins };
       }
       return { code, stats };
     } else {

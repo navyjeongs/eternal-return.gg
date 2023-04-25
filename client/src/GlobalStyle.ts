@@ -7,18 +7,14 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         box-sizing: border-box;
         color: ${(prop) => prop.theme.txtColor};
         background-color: ${(prop) => prop.theme.bgColor};
+        
         font-family: kim;
-    }
 
-    button:hover {
-        background-color: ${(prop) => prop.theme.hoverColor};
-    }
+        transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
 
-
-    :root{
-        box-sizing: border-box;
         --color__txt : ${(prop) => prop.theme.txtColor};
         --color__bg : ${(prop) => prop.theme.bgColor};
+        --color__hover:${(prop) => prop.theme.hoverColor};
 
         --color__solo : #264653;
         --color__duo: #4a4e69;
@@ -28,10 +24,12 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         --color__1st:#4a9f4d;
         --color__2nd:#0a7cbc;
         --color__3rd:#515151;
+        
         --color__cobalt__2nd:#e63946;
-
         --color__weapon__bg: #1b263b;
+
     }
+
 
 
     @font-face {

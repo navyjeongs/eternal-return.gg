@@ -54,6 +54,13 @@ const getDetailGame = async (gameId) => {
 
       maxDamage = Math.max(maxDamage, damageToPlayer);
 
+      // i가 없다면 -1 넣기
+      for (let i = 0; i < 6; i++) {
+        if (equipment[i] === undefined) {
+          equipment[i] = -1;
+        }
+      }
+
       lists[userGames[i].gameRank - 1].push({
         nickname,
         userNum,

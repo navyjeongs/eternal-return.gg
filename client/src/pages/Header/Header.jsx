@@ -90,6 +90,12 @@ const Menu = styled.ul`
     flex-direction: column;
     width: 100%;
   }
+
+  li:nth-child(-n + 2) {
+    &:hover {
+      background-color: var(--color__hover);
+    }
+  }
 `;
 const Item = styled.li`
   position: relative;
@@ -98,9 +104,6 @@ const Item = styled.li`
   height: 5rem;
   list-style: none;
   cursor: pointer;
-  &:hover {
-    background-color: var(--color__hover);
-  }
 `;
 
 const SearchInput = styled.input.attrs({
@@ -109,6 +112,8 @@ const SearchInput = styled.input.attrs({
   border: 0.2rem solid var(--color__txt);
   padding: 0;
   height: 3rem;
+  width: 16.2rem;
+  border-radius: 0.5rem;
 `;
 
 const MobileContainer = styled.div`
@@ -143,8 +148,8 @@ const SearchLink = styled.button`
   padding: 0;
   width: 2.4rem;
   height: 2.4rem;
-  right: 0.4rem;
-  top: 1.3rem;
+  right: 0.5rem;
+  top: 1.4rem;
 
   cursor: pointer;
   @media screen and (max-width: 768px) {

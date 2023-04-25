@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 import { Error, Loading } from "../../components/FetchState";
 import MatchHistoryStat from "../../components/MatchHistory/MatchHistoryStat";
 import MatchHistoryGame from "../../components/MatchHistory/MatchHistoryGame";
+import MatchHistorySelectCharacter from "../../components/MatchHistory/MatchHistorySelectCharacter";
 
 const Container = styled.div`
   width: 100%;
@@ -22,12 +23,22 @@ const Content = styled.div`
   margin: 0 2rem;
 `;
 
+const BtnContainer = styled.div`
+  margin: 0 0 2rem 0;
+`;
+
+const AddRecordBtn = styled.button`
+  border: 0.2rem solid var(--color__txt);
+  padding: 0.5rem;
+  cursor: pointer;
+`;
+
 const MatchHistory = () => {
   const param = useParams().name;
 
   // 다음 게임 존재 여부, 다음 게임 번호
   const [nextRecord, setNextRecord] = useState({
-    isExist: false,
+    isExist: true,
     recordNumber: 0,
   });
 
@@ -36,6 +47,14 @@ const MatchHistory = () => {
 
   // 특정 게임 자세히 보기 클릭 여부
   const [isOpenDetail, setIsOpenDetail] = useState({});
+
+  // 플레이한 캐릭터 가져오기
+  const [isPlayCharacter, setIsPlayCharacter] = useState(new Set());
+
+  const [isClickSpecificCharacter, setIsClickSpecificCharacter] = useState({
+    isClick: false,
+    characterNum: 0,
+  });
 
   // detail 추가
   const makeIsOpenDetail = (records) => {
@@ -63,6 +82,7 @@ const MatchHistory = () => {
       });
       setMatchHistory([]);
       setIsOpenDetail({});
+      setIsPlayCharacter(new Set());
       setNextRecord({ isExist: true, recordNumber: 0 });
       return res.data.userNum;
     },
@@ -92,7 +112,13 @@ const MatchHistory = () => {
       setMatchHistory([...matchHistory, ...records]);
       makeIsOpenDetail(records);
 
-      console.log(next);
+      let newSet = new Set();
+
+      for (let i = 0; i < records.length; i++) {
+        newSet.add(records[i].characterNum);
+      }
+
+      setIsPlayCharacter((prev) => new Set([...prev, ...newSet]));
 
       if (next === -1) {
         setNextRecord({ isExist: false, recordNumber: 0 });
@@ -150,12 +176,20 @@ const MatchHistory = () => {
           <Wrapper>
             <Content>
               <MatchHistoryStat stat={getUserStats.data} />
+              <MatchHistorySelectCharacter
+                isPlayCharacter={isPlayCharacter}
+                isClickSpecificCharacter={isClickSpecificCharacter}
+                setIsClickSpecificCharacter={setIsClickSpecificCharacter}
+              />
               <MatchHistoryGame
                 matchHistory={matchHistory}
                 isOpenDetail={isOpenDetail}
                 setIsOpenDetail={setIsOpenDetail}
+                isClickSpecificCharacter={isClickSpecificCharacter}
               />
-              <button onClick={() => getUserMatchHistory.refetch()}>10개의 전적 더 가져오기</button>
+              <BtnContainer>
+                <AddRecordBtn onClick={() => getUserMatchHistory.refetch()}>추가전적 가져오기</AddRecordBtn>
+              </BtnContainer>
             </Content>
           </Wrapper>
         </Container>

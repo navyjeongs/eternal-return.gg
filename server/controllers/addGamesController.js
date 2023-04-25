@@ -73,6 +73,13 @@ const getUserGameRecordFromApi = async (userNum, nextGame) => {
       damageToPlayer,
     } = res.data.userGames[i];
 
+    // i가 없다면 -1 넣기
+    for (let i = 0; i < 6; i++) {
+      if (equipment[i] === undefined) {
+        equipment[i] = -1;
+      }
+    }
+
     playTime =
       Math.floor(playTime / 60)
         .toString()

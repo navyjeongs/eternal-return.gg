@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import { Theme } from "./theme/theme";
 
-const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+const GlobalStyle = createGlobalStyle<{ theme }>`
 
     *, *::before, *::after {
         box-sizing: border-box;
@@ -27,6 +26,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         
         --color__cobalt__2nd:#e63946;
         --color__weapon__bg: #1b263b;
+
 
     }
 

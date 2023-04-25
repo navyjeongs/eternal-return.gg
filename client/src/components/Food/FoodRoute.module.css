@@ -1,0 +1,21 @@
+.Polygon {
+    opacity: 0;
+}
+
+.Polygon:hover {
+    fill: beige;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+
+.SelectPolygon {
+    fill: beige;
+    opacity: 0.4;
+}
+
+.SelectPolygon:hover {
+    fill: beige;
+    opacity: 0.4;
+    cursor: pointer;
+}

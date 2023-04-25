@@ -72,7 +72,7 @@ interface Theme {
 }
 
 function App() {
-  const darkBtnRef = useRef(null);
+  const darkBtnRef = useRef<HTMLButtonElement>(null);
 
   const [themes, setThemes] = useState<Theme>({
     isLoading: true,

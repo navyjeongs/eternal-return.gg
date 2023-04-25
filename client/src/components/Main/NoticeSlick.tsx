@@ -61,7 +61,7 @@ const Text = styled.div`
   background-color: inherit;
   font-size: 3rem;
   font-weight: 900;
-  color: #ffffff;
+  color: #eceaea;
 
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -70,20 +70,27 @@ const Text = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  width: 50%;
+  height: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
+  background-color: inherit;
 `;
 const Img = styled.img.attrs<ImgProps>(({ url }) => ({
-  src: "/src/assets/notice/" + url + ".png",
+  src: "/img/notice/" + url + ".png",
 }))<ImgProps>`
   background-color: ${(prop) => prop.bgColor};
   display: block;
   border: 0;
+
+  max-width: 48rem;
   width: 100%;
-  height: 30rem;
+  aspect-ratio: 16 / 9;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const NoticeSlick = () => {

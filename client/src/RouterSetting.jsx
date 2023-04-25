@@ -3,6 +3,7 @@ import MainPage from "./pages/Main/MainPage";
 import styled from "styled-components";
 import Notices from "./pages/Notices/Notices";
 import MatchHistory from "./pages/MatchHistory/MatchHistory";
+import FoodRoute from "./pages/Food/FoodRoute";
 
 const Main = styled.main`
   padding-top: 5.2rem;
@@ -16,6 +17,7 @@ const RouterSetting = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/notice" element={<Notices />} />
         <Route path="/user/:name" element={<MatchHistory />} />
+        <Route path="/food/route" element={<FoodRoute />} />
       </Routes>
     </Main>
   );

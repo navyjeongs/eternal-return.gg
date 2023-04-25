@@ -6,6 +6,7 @@ import userNumRoutes from "./routes/userNum.js";
 import gameRouteRoutes from "./routes/gameRoute.js";
 import addGamesRoutes from "./routes/addGamesRoutes.js";
 import statsRoutes from "./routes/statsRoute.js";
+import freeCharacterRoutes from "./routes/freeCharacter.js";
 import dotenv from "dotenv";
 import path from "path";
 dotenv.config();
@@ -51,7 +52,7 @@ app.get("/api/route-path/:route-id", gameRouteRoutes);
 
 app.get("/api/route/:route-id", gameRouteRoutes);
 
-app.get("/api/user/stats/:user-id");
+app.get("/api/freecharacter", freeCharacterRoutes);
 
 // app.get("*", function (req, res) {
 //   res.sendFile(path.join(__dirname, "../client/build", "index.html"));

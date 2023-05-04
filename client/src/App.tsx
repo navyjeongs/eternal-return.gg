@@ -82,11 +82,11 @@ function App() {
   useEffect(() => {
     let setting = localStorage.getItem("theme");
     // 첫 방문이라면
-    if (setting === null) {
+    if (typeof setting === null) {
       localStorage.setItem("theme", "light");
       setting = "light";
     }
-    setThemes({ isLoading: false, color: setting });
+    setThemes({ isLoading: false, color: setting as string });
   }, []);
 
   const handleDarkModeChange = () => {

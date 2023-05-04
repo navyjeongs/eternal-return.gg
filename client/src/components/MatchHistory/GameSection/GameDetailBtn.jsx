@@ -67,21 +67,26 @@ const GameDetailBtn = ({ isOpenDetail, setIsOpenDetail, gameId }) => {
 
     if (!isOpenDetail.isLoad) {
       // 불러온적 없는 요소라면 api 호출
-      const res = await axios({
-        method: "get",
-        url: `/api/detailgame/${gameId}`,
-      });
+      try {
+        const res = await axios({
+          method: "get",
+          url: `/api/detailgame/${gameId}`,
+        });
 
-      setIsOpenDetail(
-        produce((draft) => {
-          draft[gameId] = {
-            isOpen: true,
-            isLoad: true,
-            record: res.data.lists,
-            maxDamage: res.data.maxDamage,
-          };
-        })
-      );
+        setIsOpenDetail(
+          produce((draft) => {
+            draft[gameId] = {
+              isOpen: true,
+              isLoad: true,
+              record: res.data.userArr,
+              maxDamage: res.data.maxDamage,
+            };
+          })
+        );
+      } catch (error) {
+        alert(error.response.data.message);
+        throw error;
+      }
     } else {
       setIsOpenDetail(
         produce((draft) => {

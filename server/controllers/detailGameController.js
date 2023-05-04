@@ -5,9 +5,12 @@ dotenv.config();
 export const detailGame = async (req, res) => {
   const gameId = req.params.gameid;
 
-  const game = await getDetailGame(gameId);
-
-  res.send(game);
+  try {
+    const game = await getDetailGame(gameId);
+    res.send(game);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
 const getDetailGame = async (gameId) => {
@@ -24,11 +27,10 @@ const getDetailGame = async (gameId) => {
 
     const { userGames } = res.data;
 
-    // 솔로, 듀오, 스쿼드, 코발트에 따라 배열 크기 나누기
-    let lists = Array.from(Array(userGames.length / userGames[0].matchingTeamMode), () => Array());
-
     // 최고 데미지 찾기
     let maxDamage = 0;
+
+    let userList = [];
 
     // 정렬해서 전달
     for (let i = 0; i < userGames.length; i++) {
@@ -55,13 +57,13 @@ const getDetailGame = async (gameId) => {
       maxDamage = Math.max(maxDamage, damageToPlayer);
 
       // i가 없다면 -1 넣기
-      for (let i = 0; i < 6; i++) {
-        if (equipment[i] === undefined) {
-          equipment[i] = -1;
+      for (let j = 0; j < 6; j++) {
+        if (equipment[j] === undefined) {
+          equipment[j] = -1;
         }
       }
 
-      lists[userGames[i].gameRank - 1].push({
+      userList.push({
         nickname,
         userNum,
         characterNum,
@@ -82,8 +84,22 @@ const getDetailGame = async (gameId) => {
       });
     }
 
-    console.log(maxDamage);
+    userList.sort((a, b) => {
+      if (a.gameRank === b.gameRank) {
+        return b.escapeState - a.escapeState;
+      } else {
+        return a.gameRank - b.gameRank;
+      }
+    });
 
-    return { lists, maxDamage };
-  } catch (error) {}
+    let userArr = Array.from(Array(userGames.length / userGames[0].matchingTeamMode), () => Array());
+
+    for (let i = 0; i < userList.length; i++) {
+      userArr[Math.floor(i / userGames[0].matchingTeamMode)].push(userList[i]);
+    }
+
+    return { maxDamage, userArr };
+  } catch (error) {
+    throw { message: "전적을 불러오던 도중 오류가 발생했습니다.", code: 500 };
+  }
 };

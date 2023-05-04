@@ -31,12 +31,15 @@ const GameInfoDetail = ({ record, matchingMode, matchingTeamMode, maxDamage }) =
     <Container>
       <DetailHeader matchingTeamMode={matchingTeamMode} />
       {record.map((data, idx) => {
-        return (
-          <Wrapper key={idx}>
-            <RankContainer>#{data[0].gameRank}</RankContainer>
-            <DetailUserInfo data={data} maxDamage={maxDamage} matchingTeamMode={matchingTeamMode} />
-          </Wrapper>
-        );
+        console.log(data);
+        if (data.length) {
+          return (
+            <Wrapper key={idx}>
+              <RankContainer>#{data[0].gameRank}</RankContainer>
+              <DetailUserInfo data={data} maxDamage={maxDamage} matchingTeamMode={matchingTeamMode} />
+            </Wrapper>
+          );
+        }
       })}
     </Container>
   );

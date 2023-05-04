@@ -128,7 +128,9 @@ const NoticeList = () => {
           url: "/api/notice",
         });
         return res.data.list;
-      } catch (error) {}
+      } catch (error) {
+        throw error.response.data;
+      }
     },
   });
 
@@ -137,7 +139,7 @@ const NoticeList = () => {
   }
 
   if (isError) {
-    return <Loading>에러 발생</Loading>;
+    return <Loading>{error.message}</Loading>;
   }
 
   return (

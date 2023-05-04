@@ -170,7 +170,7 @@ const MatchHistory = () => {
       <>
         <Helmet>
           <title>현우GG 전적검색: {param}</title>
-          <meta name="description" content="현우GG 실시간 전적검색, 루트, MMR, KDA, KAH" />
+          <meta name="description" content="현우GG 실시간 전적검색, 루트, MMR, KDA, KAH, 이리, 이터널리턴" />
         </Helmet>
         <Container>
           <Wrapper>

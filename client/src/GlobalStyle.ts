@@ -1,10 +1,12 @@
-import { createGlobalStyle } from "styled-components";
-import { Theme } from "./theme/theme";
+import { DefaultTheme, createGlobalStyle } from "styled-components";
+import { MyTheme } from "./theme/theme";
 
-const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+const GlobalStyle = createGlobalStyle<{ theme: MyTheme }>`
 
 
     *, *::before, *::after {
+
+
         box-sizing: border-box;
         color: ${(prop) => prop.theme.txtColor};
         background-color: ${(prop) => prop.theme.bgColor};

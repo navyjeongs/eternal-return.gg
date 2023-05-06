@@ -1,29 +1,19 @@
-export interface Theme {
+import { DefaultTheme } from "styled-components";
+
+export interface MyTheme extends DefaultTheme {
   bgColor: string;
   txtColor: string;
   hoverColor: string;
 }
 
-interface ThemeGroup {
-  light: Theme;
-  dark: Theme;
-}
-
-export const light: Theme = {
+export const light: MyTheme = {
   bgColor: "#fcfafa",
   txtColor: "#121212",
   hoverColor: "#d9d9d9",
 };
 
-export const dark: Theme = {
+export const dark: MyTheme = {
   bgColor: "#121212",
   txtColor: "#ececec",
   hoverColor: "#2e313d",
 };
-
-const theme: ThemeGroup = {
-  light,
-  dark,
-};
-
-export default theme;

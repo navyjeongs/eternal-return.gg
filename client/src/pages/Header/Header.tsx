@@ -1,10 +1,14 @@
 import { useRef, useState } from "react";
-import styled, { css, keyframes } from "styled-components";
+import styled, { CSSProperties, ThemeProps, css, keyframes } from "styled-components";
 import mobileUrl from "../../assets/header/mobile.png";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const dropDown = (hei) => keyframes`
+interface MobileDropDown {
+  isClick: boolean;
+}
+
+const dropDown = (hei: ThemeProps<number>) => keyframes`
   from {
     height: hei;
   }
@@ -13,7 +17,7 @@ const dropDown = (hei) => keyframes`
   }
 `;
 
-const dropUp = (hei) => keyframes`
+const dropUp = (hei: ThemeProps<number>) => keyframes`
   from {
     height: hei;
   }
@@ -22,7 +26,7 @@ const dropUp = (hei) => keyframes`
   }
 `;
 
-const Headers = styled.header`
+const Headers = styled.header<MobileDropDown>`
   box-sizing: content-box;
   width: 100%;
   border-bottom: 0.2rem solid gray;
@@ -35,7 +39,7 @@ const Headers = styled.header`
 
   @media screen and (max-width: 768px) {
     ${(props) =>
-      props.clickHamburger
+      props.isClick
         ? css`
             animation: ${(height) => dropDown(height)} 0.3s ease-in-out forwards;
           `
@@ -172,19 +176,19 @@ const Header = () => {
   };
 
   // 검색 닉네임 변경
-  const changeSearchName = (e) => {
+  const changeSearchName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchName(e.target.value);
   };
 
   // 사용자 검색
-  const handleSearchName = (e) => {
+  const handleSearchName = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
     e.preventDefault();
     navigate(`/user/${searchName}`);
     setSearchName("");
   };
 
   return (
-    <Headers clickHamburger={clickHamburger}>
+    <Headers isClick={clickHamburger}>
       <HeaderContainer>
         <InnerContainer>
           <LogoContainer>
@@ -203,7 +207,7 @@ const Header = () => {
                 <SearchForm onSubmit={handleSearchName}>
                   <SearchInput value={searchName} onChange={changeSearchName} />
                   <SearchLink onClick={handleSearchName}>
-                    <svg width="24" height="24" viewBox="0 0 26 26" fill="none" backgroundcolor="transparent">
+                    <svg width="24" height="24" viewBox="0 0 26 26" fill="none">
                       <path
                         fillRule="evenodd"
                         clipRule="evenodd"

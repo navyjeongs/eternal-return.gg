@@ -48,7 +48,7 @@ const BoardHeader = styled.div`
   display: grid;
   grid-template-columns: 10rem 80rem 14rem;
   border-bottom: 2px solid gray;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     grid-template-columns: 1fr 10fr 2fr;
   }
 `;
@@ -82,7 +82,7 @@ const BoardContentList = styled.li`
 
   border-bottom: 2px solid gray;
   text-overflow: ellipsis;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     grid-template-columns: 1fr 10fr 2fr;
   }
 `;

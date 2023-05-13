@@ -31,10 +31,9 @@ const GameInfoDetail = ({ record, matchingMode, matchingTeamMode, maxDamage }) =
     <Container>
       <DetailHeader matchingTeamMode={matchingTeamMode} />
       {record.map((data, idx) => {
-        console.log(data);
         if (data.length) {
           return (
-            <Wrapper key={idx}>
+            <Wrapper key={data[0].userNum}>
               <RankContainer>#{data[0].gameRank}</RankContainer>
               <DetailUserInfo data={data} maxDamage={maxDamage} matchingTeamMode={matchingTeamMode} />
             </Wrapper>

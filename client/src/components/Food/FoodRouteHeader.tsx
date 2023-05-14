@@ -1,11 +1,19 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { produce } from "immer";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import CommonInput from "../common/CommonInput";
+import { AreaMaterial } from "../../material/areaMaterialItem";
+import { RoutePath } from "./FoodRouteMain";
+import useInput from "../../hooks/useInput";
 
 interface Toggle {
   isClickToggle: boolean;
+}
+
+interface Props {
+  setArea: React.Dispatch<React.SetStateAction<Array<AreaMaterial>>>;
+  setRouteTitle: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Container = styled.div`
@@ -37,6 +45,7 @@ const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  column-gap: 0.5rem;
 `;
 
 const SearchForm = styled.form`
@@ -66,6 +75,18 @@ const StartFoodContainer = styled.div`
   column-gap: 1rem;
 `;
 const StartFoodContent = styled.div``;
+const ResetBtn = styled.button`
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.2rem solid var(--color__txt);
+  padding: 0;
+
+  cursor: pointer;
+  border-radius: 1rem;
+`;
 const ToggleContainer = styled.div<Toggle>`
   position: relative;
   cursor: pointer;
@@ -100,58 +121,60 @@ const ToggleCircle = styled.div<Toggle>`
     `}
 `;
 
-const FoodRouteHeader = (prop) => {
-  const { area, setArea, setRouteTitle } = prop;
+const FoodRouteHeader = (prop: Props) => {
+  const { setArea, setRouteTitle } = prop;
 
   const [isClickToggle, setIsClickToggle] = useState(true);
 
-  const [routeId, setRouteId] = useState("");
+  const [routeId, setRouteId, resetRouteId] = useInput("");
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRouteId(e.target.value);
-  };
-
-  const getRoutePath = async (e) => {
+  /**
+   * 루트에서 선택 지역을 가져오는 함수
+   * @param e
+   */
+  const getRoutePath = async (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    let area: any;
-    const url = `/api/routepath/${routeId}`;
-    const res = await axios({
-      method: "GET",
-      url: `${url}`,
-    });
+    try {
+      const res = await axios({
+        method: "GET",
+        url: `/api/routepath/${routeId}`,
+      });
 
-    if (res.data.code === "error") {
-      window.alert("존재하지 않는 루트ID 입니다.");
-    } else {
-      area = res.data.path.toString().split(", ");
-      for (let i = 0; i < area.length; i++) {
-        area[i] = Number(area[i]);
-      }
-      // 선택 지역 초기화 하기
-      resetClickArea();
+      const { code, title, path } = res.data;
 
-      // 루트에서 가져온 지역의 isClick을 true로 변경
-      for (let i = 0; i < area.length; i++) {
-        setArea(
-          produce((draft) => {
-            draft[area[i]].isClick = true;
-          })
-        );
-      }
-      setRouteTitle(res.data.title);
-    }
-  };
+      let paths: Array<RoutePath> = [];
 
-  const resetClickArea = () => {
-    for (let i = 1; i < area.length; i++) {
       setArea(
-        produce((draft) => {
-          draft[i].isClick = false;
+        produce<Array<AreaMaterial>>((draft) => {
+          for (let i = 0; i < path.length; i++) {
+            draft[path[i]].isClick = true;
+          }
         })
       );
+
+      setRouteTitle(res.data.title);
+    } catch (error: any) {
+      alert(error.response.data.message);
     }
-    setRouteTitle("");
+    resetRouteId("");
+  };
+
+  /**
+   * 선택 지역 초기화 하는 함수
+   */
+  const resetArea = () => {
+    if (window.confirm("선택지역을 초기화 하시겠습니까?")) {
+      setArea(
+        produce<Array<AreaMaterial>>((draft) => {
+          for (let i = 1; i < 19; i++) {
+            draft[i].isClick = false;
+          }
+        })
+      );
+      resetRouteId("");
+      setRouteTitle("");
+    }
   };
 
   // 토글 on / off
@@ -162,7 +185,7 @@ const FoodRouteHeader = (prop) => {
   // 토글 on / off에 따라 시작 아이템 포함 여부
   useEffect(() => {
     setArea(
-      produce((draft) => {
+      produce<Array<AreaMaterial>>((draft) => {
         draft[0].isClick = isClickToggle;
       })
     );
@@ -181,7 +204,7 @@ const FoodRouteHeader = (prop) => {
         <SearchContainer>
           <SearchForm onSubmit={getRoutePath}>
             <CommonInput
-              onChange={handleInput}
+              onChange={setRouteId}
               value={routeId}
               placeholder="루트 ID를 입력하세요."
               width="15rem"
@@ -198,6 +221,17 @@ const FoodRouteHeader = (prop) => {
               </svg>
             </SearchSubmitBtn>
           </SearchForm>
+          <ResetBtn onClick={resetArea}>
+            <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.25 14.375L8.75 19.5417L14.25 24.7083" stroke="var(--color__txt)" strokeWidth="2" />
+              <path
+                d="M3.16451 15.0208C2.10511 13.2971 1.68079 11.2932 1.95734 9.31981C2.2339 7.34645 3.19589 5.51397 4.6941 4.10656C6.19231 2.69914 8.14302 1.79546 10.2437 1.53567C12.3444 1.27587 14.4776 1.67448 16.3125 2.66967C18.1474 3.66486 19.5815 5.20101 20.3923 7.03988C21.2032 8.87876 21.3454 10.9176 20.797 12.8401C20.2487 14.7627 19.0403 16.4615 17.3593 17.6732C15.6784 18.8849 13.6188 19.5416 11.5 19.5416"
+                stroke="var(--color__txt)"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </ResetBtn>
         </SearchContainer>
       </ContentWrapper>
     </Container>

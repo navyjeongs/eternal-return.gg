@@ -115,7 +115,7 @@ function App() {
         <ThemeProvider theme={themes.color === "light" ? light : dark}>
           <Wrapper>
             <Helmet>
-              <title>현우GG 전적검색</title>
+              <title>이터널 리턴 전적검색 - 현우 GG</title>
             </Helmet>
             <GlobalStyle />
             <Header />

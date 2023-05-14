@@ -5,6 +5,8 @@
 /client/src/assets
 /client/dist
 
+/client/src/material
+
 ## server
 /server/node_modules
 /server/.env

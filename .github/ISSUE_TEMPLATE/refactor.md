@@ -1,13 +1,4 @@
 ---
-name: Refactor issue template
-about: Refactor issue template
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
 name: Refactor
 about: 프로젝트 리팩토링 이슈
 title: 'Refactor'

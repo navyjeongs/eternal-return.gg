@@ -1,13 +1,4 @@
 ---
-name: Feature issue template
-about: Feature issue template
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
 name: Feat
 about: 프로젝트 개발 기능 이슈
 title: 'Feat'

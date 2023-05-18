@@ -1,13 +1,4 @@
 ---
-name: Fix issue template
-about: Fix issue template
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
 name: Fix
 about: 프로젝트 버그 수정 이슈
 title: 'Fix'

@@ -3,6 +3,8 @@ import axios from "axios";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { characterState } from "../../recoil/atoms";
+import { Loading } from "../FetchState";
+import { Error } from "../FetchState";
 
 const Container = styled.div`
   margin: 2rem 0;
@@ -60,7 +62,7 @@ const Img = styled.img`
 const FreeCharacters = () => {
   const characterVal = useRecoilValue(characterState);
 
-  const { data, isLoading, isError, isSuccess } = useQuery({
+  const { data, isLoading, isError, isSuccess } = useQuery<Array<number>>({
     queryKey: ["freeCharacter"],
     queryFn: async () => {
       const res = await axios({
@@ -72,29 +74,34 @@ const FreeCharacters = () => {
     },
   });
 
-  if (isSuccess) {
-    return (
-      <Container>
-        <Wrapper>
-          <Title>이번주 무료 캐릭터</Title>
-          <CharacterGrid>
-            {data.map((num) => {
-              return (
-                <Item key={num}>
-                  <ItemTitle>{characterVal[num]}</ItemTitle>
-
-                  <ImgContainer>
-                    <Img src={`/img/profile/${num}.png`} />
-                  </ImgContainer>
-                </Item>
-              );
-            })}
-            <Item></Item>
-          </CharacterGrid>
-        </Wrapper>
-      </Container>
-    );
+  if (isLoading) {
+    return <Loading>무료 캐릭터를 불러오는중...</Loading>;
   }
+
+  if (isError) {
+    return <Error>무료 캐릭터를 불러오던도중 에러가 발생했습니다...</Error>;
+  }
+
+  return (
+    <Container>
+      <Wrapper>
+        <Title>이번주 무료 캐릭터</Title>
+        <CharacterGrid>
+          {data.map((num) => {
+            return (
+              <Item key={num}>
+                <ItemTitle>{characterVal[num]}</ItemTitle>
+                <ImgContainer>
+                  <Img src={`/img/profile/${num}.png`} />
+                </ImgContainer>
+              </Item>
+            );
+          })}
+          <Item></Item>
+        </CharacterGrid>
+      </Wrapper>
+    </Container>
+  );
 };
 
 export default FreeCharacters;

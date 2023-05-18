@@ -3,7 +3,7 @@ import MainPage from "./pages/Main/MainPage";
 import styled from "styled-components";
 import Notices from "./pages/Notices/Notices";
 import MatchHistory from "./pages/MatchHistory/MatchHistory";
-import FoodRoute from "./pages/Food/FoodRoute";
+import FoodRoute from "./pages/FoodMaker/FoodRoute";
 
 const Main = styled.main`
   padding-top: 5.2rem;

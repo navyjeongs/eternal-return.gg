@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle<{ theme: MyTheme }>`
         --color__txt : ${(prop) => prop.theme.txtColor};
         --color__bg : ${(prop) => prop.theme.bgColor};
         --color__hover:${(prop) => prop.theme.hoverColor};
+        --color__border: ${(prop) => prop.theme.borderColor};
 
         --color__solo : #264653;
         --color__duo: #4a4e69;

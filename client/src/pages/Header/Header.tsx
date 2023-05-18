@@ -4,6 +4,8 @@ import mobileUrl from "../../assets/header/mobile.png";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+import useInput from "../../hooks/useInput";
+
 interface MobileDropDown {
   isClick: boolean;
 }
@@ -116,8 +118,6 @@ const SearchInput = styled.input.attrs({
   border: 0.2rem solid var(--color__txt);
   padding: 0;
   height: 3rem;
-  width: 16.2rem;
-  border-radius: 0.5rem;
 `;
 
 const MobileContainer = styled.div`
@@ -167,24 +167,19 @@ const Header = () => {
   // 모바일 토글 버튼 클릭여부
   const [clickHamburger, setClickHamburger] = useState(false);
 
-  // 검색 닉네임
-  const [searchName, setSearchName] = useState("");
+  // 사용자 이름
+  const [searchName, setSearchName, resetSearchName] = useInput("");
 
   // 토큰 버튼 변경
   const changeToggleBtn = () => {
     setClickHamburger((prev) => !prev);
   };
 
-  // 검색 닉네임 변경
-  const changeSearchName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchName(e.target.value);
-  };
-
   // 사용자 검색
   const handleSearchName = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
     e.preventDefault();
     navigate(`/user/${searchName}`);
-    setSearchName("");
+    resetSearchName("");
   };
 
   return (
@@ -205,7 +200,7 @@ const Header = () => {
               <Item onClick={() => alert("서비스 준비중입니다.")}>루트 검색</Item>
               <Item>
                 <SearchForm onSubmit={handleSearchName}>
-                  <SearchInput value={searchName} onChange={changeSearchName} />
+                  <SearchInput value={searchName} onChange={setSearchName} />
                   <SearchLink onClick={handleSearchName}>
                     <svg width="24" height="24" viewBox="0 0 26 26" fill="none">
                       <path

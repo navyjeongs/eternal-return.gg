@@ -11,8 +11,11 @@ const Notices = () => {
   return (
     <>
       <Helmet>
-        <title>현우GG 공지사항</title>
-        <meta name="description" content="이터널리턴 공지사항, 패치노트, 이벤트, 캐릭터 소식, 핫픽스, 이리" />
+        <title>이터널 리턴 공지사항</title>
+        <meta
+          name="description"
+          content="이터널리턴 공지사항, 패치노트, 이벤트, 캐릭터 소식, 핫픽스, 이리, 캐릭터, 도감, 특성, 아이템, 재료, 특성"
+        />
       </Helmet>
       <Container>
         <NoticeList />

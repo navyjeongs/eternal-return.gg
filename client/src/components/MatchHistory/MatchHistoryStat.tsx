@@ -1,6 +1,20 @@
 import styled, { keyframes } from "styled-components";
+import { UserStats } from "../../pages/MatchHistory/MatchHistory";
 
-const GraphAnimation = (width) => keyframes`
+interface StatProps {
+  stat: Array<UserStats>;
+}
+
+interface ModeColor {
+  [key: number]: { name: string; color: string; minRank: number };
+}
+
+interface GraphStyle {
+  w: string;
+  bgColor: string;
+}
+
+const GraphAnimation = (width: string) => keyframes`
   0% {
     width: 0%;
     color: var(--color__txt);
@@ -29,7 +43,7 @@ const StatContainer = styled.div`
   border: 0.2rem solid #e0e1dd;
 `;
 
-const MatchingModeTitle = styled.h2`
+const MatchingModeTitle = styled.h2<{ bgColor: string }>`
   padding: 1rem 0;
   margin: 0;
   font-size: 1.8rem;
@@ -59,7 +73,7 @@ const StandardGraph = styled.div`
   margin: 0 auto;
 `;
 
-const InnerGraph = styled.div`
+const InnerGraph = styled.div<GraphStyle>`
   height: 1.5rem;
   width: ${(prop) => prop.w};
   background-color: var(${(props) => props.bgColor});
@@ -79,20 +93,21 @@ const NotExistGame = styled.div`
   font-size: 2rem;
 `;
 
-const MatchHistoryStat = ({ stat }) => {
-  const mode = {
-    1: { name: "솔로", color: "--color__solo" },
-    2: { name: "듀오", color: "--color__duo" },
-    3: { name: "스쿼드", color: "--color__squad" },
-    4: { name: "코발트", color: "--color__cobalt" },
+const MatchHistoryStat = ({ stat }: StatProps) => {
+  const mode: ModeColor = {
+    1: { name: "솔로", color: "--color__solo", minRank: 15 },
+    2: { name: "듀오", color: "--color__duo", minRank: 7 },
+    3: { name: "스쿼드", color: "--color__squad", minRank: 6 },
+    4: { name: "코발트", color: "--color__cobalt", minRank: 2 },
   };
 
   return (
     <Container>
       {stat.map((data, idx) => {
+        let minRank = mode[data.matchingTeamMode].minRank;
         const bgColor = mode[data?.matchingTeamMode]?.color || mode[idx + 1].color;
+
         if (data.averageRank === undefined) {
-          console.log(bgColor);
           return (
             <StatContainer key={idx + 100}>
               <MatchingModeTitle bgColor={bgColor}>{mode[idx + 1].name}</MatchingModeTitle>
@@ -122,7 +137,7 @@ const MatchHistoryStat = ({ stat }) => {
               <StatList>
                 <StatTitle>평균 순위</StatTitle>
                 <StandardGraph>
-                  <InnerGraph w={(1 / data.averageRank) * 100 + "%"} bgColor={bgColor}></InnerGraph>
+                  <InnerGraph w={(data.averageRank / minRank) * 100 + "%"} bgColor={bgColor}></InnerGraph>
                 </StandardGraph>
                 <StatContent>{data.averageRank}</StatContent>
               </StatList>
@@ -150,21 +165,21 @@ const MatchHistoryStat = ({ stat }) => {
               <StatList>
                 <StatTitle>평균 킬</StatTitle>
                 <StandardGraph>
-                  <InnerGraph w={"100%"} bgColor={bgColor}></InnerGraph>
+                  <InnerGraph w="100%" bgColor={bgColor}></InnerGraph>
                 </StandardGraph>
                 <StatContent>{data.averageKills}</StatContent>
               </StatList>
               <StatList>
                 <StatTitle>평균 어시</StatTitle>
                 <StandardGraph>
-                  <InnerGraph w={"100%"} bgColor={bgColor}></InnerGraph>
+                  <InnerGraph w="100%" bgColor={bgColor}></InnerGraph>
                 </StandardGraph>
                 <StatContent>{data.averageAssistants}</StatContent>
               </StatList>
               <StatList>
                 <StatTitle>평균 동물 킬</StatTitle>
                 <StandardGraph>
-                  <InnerGraph w={"100%"} bgColor={bgColor}></InnerGraph>
+                  <InnerGraph w="100%" bgColor={bgColor}></InnerGraph>
                 </StandardGraph>
                 <StatContent>{data.averageHunts}</StatContent>
               </StatList>

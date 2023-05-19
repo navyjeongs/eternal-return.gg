@@ -64,7 +64,7 @@ export interface OpenDetail {
   [key: number]: AddDetail;
 }
 
-interface IsClick {
+export interface IsClick {
   isClick: boolean;
   characterNum: number;
 }
@@ -222,37 +222,41 @@ const MatchHistory = () => {
     return <Error>최근 90일내의 플레이 게임이 존재하지 않습니다.</Error>;
   }
 
-  if (getUserStats.isSuccess) {
-    return (
-      <>
-        <Helmet>
-          <title>현우GG {param}</title>
-          <meta name="description" content="현우GG 실시간 전적검색, 루트, MMR, KDA, KAH, 이리, 이터널리턴" />
-        </Helmet>
-        <Container>
-          <Wrapper>
-            <Content>
-              <MatchHistoryStat stat={getUserStats.data} />
-              <MatchHistorySelectCharacter
-                isPlayCharacter={isPlayCharacter}
-                isClickSpecificCharacter={isClickSpecificCharacter}
-                setIsClickSpecificCharacter={setIsClickSpecificCharacter}
-              />
-              <MatchHistoryGame
-                matchHistory={matchHistory}
-                isOpenDetail={isOpenDetail}
-                setIsOpenDetail={setIsOpenDetail}
-                isClickSpecificCharacter={isClickSpecificCharacter}
-              />
-              <BtnContainer>
-                <AddRecordBtn onClick={() => getUserMatchHistory.refetch()}>추가전적 가져오기</AddRecordBtn>
-              </BtnContainer>
-            </Content>
-          </Wrapper>
-        </Container>
-      </>
-    );
-  }
+  // isOpenDetail이 undefined가 아닐 때만
+  return (
+    <>
+      {getUserMatchHistory.isSuccess && isOpenDetail && (
+        <>
+          <Helmet>
+            <title>현우GG {param}</title>
+            <meta name="description" content="현우GG 실시간 전적검색, 루트, MMR, KDA, KAH, 이리, 이터널리턴" />
+          </Helmet>
+          <Container>
+            <Wrapper>
+              <Content>
+                {getUserStats.data && <MatchHistoryStat stat={getUserStats.data} />}
+
+                <MatchHistorySelectCharacter
+                  isPlayCharacter={isPlayCharacter}
+                  isClickSpecificCharacter={isClickSpecificCharacter}
+                  setIsClickSpecificCharacter={setIsClickSpecificCharacter}
+                />
+                <MatchHistoryGame
+                  matchHistory={matchHistory}
+                  isOpenDetail={isOpenDetail}
+                  setIsOpenDetail={setIsOpenDetail}
+                  isClickSpecificCharacter={isClickSpecificCharacter}
+                />
+                <BtnContainer>
+                  <AddRecordBtn onClick={() => getUserMatchHistory.refetch()}>추가전적 가져오기</AddRecordBtn>
+                </BtnContainer>
+              </Content>
+            </Wrapper>
+          </Container>
+        </>
+      )}
+    </>
+  );
 };
 
 export default MatchHistory;

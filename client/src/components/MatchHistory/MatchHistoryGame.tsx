@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 import GameRankColor from "./GameSection/GameRankColor";
@@ -11,6 +12,15 @@ import GameMMR from "./GameSection/GameMMR";
 import GameRoute from "./GameSection/GameRoute";
 import GameInfoDetail from "./DetailSection/GameInfoDetail";
 import GameDetailBtn from "./GameSection/GameDetailBtn";
+
+import { IsClick, OpenDetail, StatRecord } from "../../pages/MatchHistory/MatchHistory";
+
+interface Props {
+  matchHistory: Array<StatRecord>;
+  isOpenDetail: OpenDetail;
+  setIsOpenDetail: React.Dispatch<React.SetStateAction<OpenDetail | undefined>>;
+  isClickSpecificCharacter: IsClick;
+}
 
 const Container = styled.div`
   margin: 2rem 0;
@@ -75,7 +85,7 @@ const StatSection3 = styled.div`
     margin-left: 1rem;
   }
 `;
-const MatchHistoryGame = ({ matchHistory, isOpenDetail, setIsOpenDetail, isClickSpecificCharacter }) => {
+const MatchHistoryGame = ({ matchHistory, isOpenDetail, setIsOpenDetail, isClickSpecificCharacter }: Props) => {
   // 특정 캐릭터를 눌렀을 때와 안눌렀을 때 구분
 
   return (

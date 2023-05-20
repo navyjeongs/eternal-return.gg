@@ -113,7 +113,8 @@ const NoticeList = () => {
   const location = useLocation();
 
   // 공지 or 패치노트 or 이벤트 선택하기
-  const [menu, setMenu] = useState(location.state);
+  // 만약 url로 바로 들어왔다면 기본 값인 notice로 셋팅
+  const [menu, setMenu] = useState(location.state || "notice");
 
   const showMenu = (menu) => {
     setMenu(menu);

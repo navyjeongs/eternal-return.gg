@@ -1,7 +1,20 @@
-import { useRecoilValue } from "recoil";
+import React, { SetStateAction } from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+
 import { characterState } from "../../recoil/atoms";
-import { useEffect } from "react";
+
+import { IsClick } from "../../pages/MatchHistory/MatchHistory";
+
+interface Props {
+  isPlayCharacter: Set<number>;
+  isClickSpecificCharacter: IsClick;
+  setIsClickSpecificCharacter: React.Dispatch<SetStateAction<IsClick>>;
+}
+
+interface HandleOnClick {
+  (e: React.MouseEvent<HTMLButtonElement>, num: number): void;
+}
 
 const Container = styled.div``;
 
@@ -11,8 +24,6 @@ const Title = styled.div`
 `;
 
 const Character = styled.div`
-  column-gap: 1rem;
-
   white-space: normal;
 `;
 
@@ -24,14 +35,17 @@ const BtnContainer = styled.div`
 const ChracterBtn = styled.button`
   border: 0.2rem solid var(--color__txt);
   padding: 0.5rem;
-
   cursor: pointer;
 `;
 
-const MatchHistorySelectCharacter = ({ isPlayCharacter, isClickSpecificCharacter, setIsClickSpecificCharacter }) => {
+const MatchHistorySelectCharacter = ({
+  isPlayCharacter,
+  isClickSpecificCharacter,
+  setIsClickSpecificCharacter,
+}: Props) => {
   const characterVal = useRecoilValue(characterState);
 
-  const handleSelectCharacter = (e, num) => {
+  const handleSelectCharacter: HandleOnClick = (e, num) => {
     // 같은 캐릭터를 누르면 전체 보기로 바꿈
     if (isClickSpecificCharacter.characterNum === num) {
       setIsClickSpecificCharacter({ ...isClickSpecificCharacter, isClick: false, characterNum: 0 });

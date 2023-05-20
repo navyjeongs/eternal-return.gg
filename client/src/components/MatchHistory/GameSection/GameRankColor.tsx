@@ -1,6 +1,15 @@
 import styled, { css } from "styled-components";
 
-const RankColor = styled.div`
+interface Props {
+  gameRank: number;
+  escapeState: number;
+  matchingMode: number;
+}
+
+interface RankProp extends Pick<Props, "gameRank" | "escapeState"> {}
+interface CobaltProp extends Pick<Props, "gameRank"> {}
+
+const RankColor = styled.div<RankProp>`
   width: 1rem;
 
   ${(prop) =>
@@ -24,12 +33,12 @@ const RankColor = styled.div`
     `};
 `;
 
-const CobaltRankColor = styled.div`
+const CobaltRankColor = styled.div<CobaltProp>`
   width: 1rem;
   background-color: ${(prop) => (prop.gameRank === 1 ? "#4a9f4d" : "#e63946")};
 `;
 
-const GameRankColor = ({ gameRank, escapeState, matchingMode }) => {
+const GameRankColor = ({ gameRank, escapeState, matchingMode }: Props) => {
   if (matchingMode === 6) {
     return <CobaltRankColor gameRank={gameRank} />;
   } else {

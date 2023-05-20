@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 
+interface Props {
+  gameRank: number;
+  matchingMode: number;
+  matchingTeamMode: number;
+  playingDate: number;
+  escapeState: number;
+  playTime: number;
+}
+
+interface NormalRankProps extends Pick<Props, "gameRank" | "escapeState"> {}
+interface CobaltProps extends Pick<Props, "gameRank"> {}
+
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -15,7 +27,7 @@ const Container = styled.div`
   }
 `;
 
-const NormalRank = styled.div`
+const NormalRank = styled.div<NormalRankProps>`
   font-size: 1.6rem;
 
   ${(prop) =>
@@ -38,7 +50,7 @@ const NormalRank = styled.div`
       color: var(--color__3rd);
     `};
 `;
-const CobaltRank = styled.div`
+const CobaltRank = styled.div<CobaltProps>`
   font-size: 1.8rem;
   color: var(${(prop) => (prop.gameRank === 1 ? "--color__1st" : "--color__cobalt__2nd")});
 `;
@@ -72,15 +84,21 @@ const PlayDate = styled.div`
   font-size: 1.1rem;
 `;
 
-const GameRankAndDate = (prop) => {
-  const { escapeState, gameRank, matchingMode, matchingTeamMode, playingDate, playTime } = prop;
+const GameRankAndDate = ({ escapeState, gameRank, matchingMode, matchingTeamMode, playingDate, playTime }: Props) => {
+  const modeName = new Map([
+    [2, "일반"],
+    [3, "랭크"],
+    [6, "코발트"],
+  ]);
 
-  const modeName = { 2: "일반", 3: "랭크", 6: "코발트" };
-  const matchName = { 1: "솔로", 2: "듀오", 3: "스쿼드", 4: "" };
+  const matchName = new Map([
+    [1, "솔로"],
+    [2, "듀오"],
+    [3, "스쿼드"],
+    [4, ""],
+  ]);
 
   const [rankState, setRankState] = useState("");
-
-  const [playDate, setPlayDate] = useState("");
 
   useEffect(() => {
     if (escapeState === 3) {
@@ -103,8 +121,8 @@ const GameRankAndDate = (prop) => {
       )}
 
       <Mode>
-        {modeName[matchingMode]}
-        {matchingMode !== 6 && <Match>({matchName[matchingTeamMode]})</Match>}
+        {modeName.get(matchingMode)}
+        {matchingMode !== 6 && <Match>({matchName.get(matchingTeamMode)})</Match>}
       </Mode>
       <Bar />
       <PlayTime>{playTime}</PlayTime>

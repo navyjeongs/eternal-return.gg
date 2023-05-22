@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+interface Props {
+  matchingMode: number;
+  playerKill: number;
+  playerAssistant: number;
+  playerDeaths: number;
+  monsterKill: number;
+}
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -23,7 +31,7 @@ const Explain = styled(Result)`
   }
 `;
 
-const GameKAH = ({ matchingMode, playerKill, playerAssistant, playerDeaths, monsterKill }) => {
+const GameKAH = ({ matchingMode, playerKill, playerAssistant, playerDeaths, monsterKill }: Props) => {
   return (
     <Container>
       <Wrapper>

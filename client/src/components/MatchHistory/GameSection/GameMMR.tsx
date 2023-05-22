@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface Props {
+  mmrAfter?: number;
+  mmrGain?: number;
+}
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -18,7 +23,7 @@ const MMR = styled.div`
   }
 `;
 
-const GainMMR = styled.div`
+const GainMMR = styled.div<{ mmrGain: number }>`
   font-size: 1.4rem;
   color: ${(prop) => (prop.mmrGain >= 0 ? "#5fa8d3" : "#ef476f")};
   @media screen and (max-width: 768px) {
@@ -26,7 +31,7 @@ const GainMMR = styled.div`
   }
 `;
 
-const Explain = styled(GainMMR)`
+const Explain = styled.div`
   font-size: 1.4rem;
   color: #778da9;
   display: flex;
@@ -37,11 +42,11 @@ const Explain = styled(GainMMR)`
   }
 `;
 
-const GameMMR = ({ mmrAfter, mmrGain }) => {
+const GameMMR = ({ mmrAfter, mmrGain }: Props) => {
   return (
     <Container>
       <Wrapper>
-        {mmrAfter !== undefined ? (
+        {mmrAfter && mmrGain ? (
           <MMR>
             {mmrAfter}
             <GainMMR mmrGain={mmrGain}>{mmrGain >= 0 ? <>(+{mmrGain})</> : <>({mmrGain})</>}</GainMMR>

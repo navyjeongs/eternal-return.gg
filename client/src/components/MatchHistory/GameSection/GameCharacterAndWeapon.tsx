@@ -1,6 +1,12 @@
-import { selector, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { characterState, weaponState } from "../../../recoil/atoms";
+import { characterState } from "../../../recoil/atoms";
+
+interface Props {
+  bestWeapon: number;
+  characterLevel: number;
+  characterNum: number;
+}
 
 const Container = styled.div`
   width: 100%;
@@ -65,9 +71,8 @@ const CharacterName = styled.div`
   text-align: center;
 `;
 
-const GameCharacterAndWeapon = ({ bestWeapon, characterLevel, characterNum }) => {
+const GameCharacterAndWeapon = ({ bestWeapon, characterLevel, characterNum }: Props) => {
   const characterValue = useRecoilValue(characterState);
-  const weaponValue = useRecoilValue(weaponState);
 
   return (
     <Container>

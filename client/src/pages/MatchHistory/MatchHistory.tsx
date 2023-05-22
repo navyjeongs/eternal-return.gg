@@ -9,45 +9,22 @@ import { Error, Loading } from "../../components/FetchState";
 import MatchHistoryStat from "../../components/MatchHistory/MatchHistoryStat";
 import MatchHistoryGame from "../../components/MatchHistory/MatchHistoryGame";
 import MatchHistorySelectCharacter from "../../components/MatchHistory/MatchHistorySelectCharacter";
+import { DetailGameRecord, GameRecord } from "../../types/interface";
 
 interface NextRecord {
   isExist: boolean;
   recordNumber: number;
 }
 
-export interface StatRecord {
-  bestWeapon: number;
-  characterLevel: number;
-  characterNum: number;
-  damageToPlayer: number;
-  equipment: [number, number, number, number, number, number];
-  escapeState: number;
-  gameId: number;
-  gameRank: number;
-  matchingMode: number;
-  matchingTeamMode: number;
-  monsterKill: number;
-  playTime: string;
-  playerAssistant: number;
-  playerDeaths: number;
-  playerKill: number;
-  playingDate: string;
-  routeIdOfStart: number;
-  seasonId: number;
-  skinCode: number;
-  traitFirstCore: number;
-  traitFirstSub: [] | [number, number];
-  traitSecondSub: [] | [number, number];
-  mmrAfter?: number;
-  mmrGain?: number;
-  userNum: number;
-}
-
 interface AddDetail {
   isOpen: boolean;
   isLoad: boolean;
-  record: Array<StatRecord> | [];
+  record: Array<Array<DetailGameRecord>> | [];
   maxDamage: number;
+}
+
+export interface OpenDetail {
+  [key: number]: AddDetail;
 }
 
 export interface UserStats {
@@ -61,10 +38,6 @@ export interface UserStats {
   top3: number;
   totalGames: number;
   totalWins: number;
-}
-
-export interface OpenDetail {
-  [key: number]: AddDetail;
 }
 
 export interface IsClick {
@@ -105,7 +78,7 @@ const MatchHistory = () => {
   });
 
   // 전적을 저장할 배열
-  const [matchHistory, setMatchHistory] = useState<Array<StatRecord> | []>([]);
+  const [matchHistory, setMatchHistory] = useState<Array<GameRecord> | []>([]);
 
   // 특정 게임 자세히 보기 클릭 여부
   const [isOpenDetail, setIsOpenDetail] = useState<OpenDetail | undefined>({});
@@ -119,7 +92,7 @@ const MatchHistory = () => {
   });
 
   // detail 추가
-  const makeIsOpenDetail = (records: Array<StatRecord>) => {
+  const makeIsOpenDetail = (records: Array<GameRecord>) => {
     let addDetail: Record<number, AddDetail> = {};
 
     for (let i = 0; i < records.length; i++) {
@@ -224,6 +197,8 @@ const MatchHistory = () => {
   if (getUserMatchHistory.isError) {
     return <Error>최근 90일내의 플레이 게임이 존재하지 않습니다.</Error>;
   }
+
+  console.log("isOpenDetail", isOpenDetail);
 
   // isOpenDetail이 undefined가 아닐 때만
   return (

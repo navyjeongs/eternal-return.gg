@@ -13,10 +13,11 @@ import GameRoute from "./GameSection/GameRoute";
 import GameInfoDetail from "./DetailSection/GameInfoDetail";
 import GameDetailBtn from "./GameSection/GameDetailBtn";
 
-import { IsClick, OpenDetail, StatRecord } from "../../pages/MatchHistory/MatchHistory";
+import { IsClick, OpenDetail } from "../../pages/MatchHistory/MatchHistory";
+import { GameRecord } from "../../types/interface";
 
 interface Props {
-  matchHistory: Array<StatRecord>;
+  matchHistory: Array<GameRecord>;
   isOpenDetail: OpenDetail;
   setIsOpenDetail: React.Dispatch<React.SetStateAction<OpenDetail | undefined>>;
   isClickSpecificCharacter: IsClick;

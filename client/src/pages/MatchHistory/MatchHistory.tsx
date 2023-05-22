@@ -38,6 +38,8 @@ export interface StatRecord {
   traitFirstCore: number;
   traitFirstSub: [] | [number, number];
   traitSecondSub: [] | [number, number];
+  mmrAfter?: number;
+  mmrGain?: number;
 }
 
 interface AddDetail {

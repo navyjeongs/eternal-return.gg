@@ -1,9 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { Route, Routes, useLocation } from "react-router-dom";
+import axios, { AxiosError } from "axios";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Loading } from "../FetchState";
+
+interface NoticeContent {
+  content: string;
+  date: string;
+  link: string;
+}
+
+interface QueryData {
+  notice: Array<NoticeContent>;
+  patchnote: Array<NoticeContent>;
+  event: Array<NoticeContent>;
+  character: Array<NoticeContent>;
+}
 
 const Main = styled.div`
   max-width: 108rem;
@@ -103,7 +116,7 @@ const BoardListContent = styled(BoardListIndex)`
   }
 `;
 
-const BoardLink = styled.a.attrs((prop) => {})`
+const BoardLink = styled.a`
   text-decoration: none;
 `;
 
@@ -114,24 +127,19 @@ const NoticeList = () => {
 
   // 공지 or 패치노트 or 이벤트 선택하기
   // 만약 url로 바로 들어왔다면 기본 값인 notice로 셋팅
-  const [menu, setMenu] = useState(location.state || "notice");
+  const [menu, setMenu] = useState<"notice" | "patchnote" | "event" | "character">(location.state || "notice");
 
-  const showMenu = (menu) => {
-    setMenu(menu);
-  };
-
-  const { isLoading, isError, error, data } = useQuery({
-    queryKey: ["mainPage"],
+  const { isLoading, isError, isSuccess, data } = useQuery<QueryData, AxiosError>({
+    queryKey: ["notice"],
     queryFn: async () => {
-      try {
-        const res = await axios({
-          method: "get",
-          url: "/api/notice",
-        });
-        return res.data.list;
-      } catch (error) {
-        throw error.response.data;
-      }
+      const res = await axios({
+        method: "get",
+        url: "/api/notice",
+      });
+      return res.data.list;
+    },
+    onError: (err: AxiosError) => {
+      return err.response?.data;
     },
   });
 
@@ -140,7 +148,7 @@ const NoticeList = () => {
   }
 
   if (isError) {
-    return <Loading>{error.message}</Loading>;
+    return <Loading>공지사항을 불러오는 중 오류가 발생했습니다.</Loading>;
   }
 
   return (
@@ -159,16 +167,16 @@ const NoticeList = () => {
             <BoardHeaderDate>작성일</BoardHeaderDate>
           </BoardHeader>
           <BoardMainContainer>
-            {data[menu].map((body, idx) => {
+            {data[menu].map((ele: NoticeContent, idx: number) => {
               return (
                 <BoardContentList key={idx}>
                   <BoardListIndex>{idx + 1}</BoardListIndex>
                   <BoardListContent>
-                    <BoardLink href={body.link} target="_blank" rel="noreferrer">
-                      {body.content}
+                    <BoardLink href={ele.link} target="_blank" rel="noreferrer">
+                      {ele.content}
                     </BoardLink>
                   </BoardListContent>
-                  <BoardListDate>{body.date}</BoardListDate>
+                  <BoardListDate>{ele.date}</BoardListDate>
                 </BoardContentList>
               );
             })}

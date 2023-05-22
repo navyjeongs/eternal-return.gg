@@ -71,6 +71,7 @@ const getUserGameRecordFromApi = async (userNum, nextGame) => {
       traitSecondSub,
       playerDeaths,
       damageToPlayer,
+      userNum,
     } = res.data.userGames[i];
 
     // i가 없다면 -1 넣기
@@ -116,6 +117,7 @@ const getUserGameRecordFromApi = async (userNum, nextGame) => {
       traitSecondSub,
       playerDeaths,
       damageToPlayer,
+      userNum,
     });
   }
 

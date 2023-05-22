@@ -1,6 +1,14 @@
 import styled, { keyframes } from "styled-components";
 import DetailHeader from "./DetailHeader";
 import DetailUserInfo from "./DetailUserInfo";
+import { DetailGameRecord } from "../../../types/interface";
+
+interface Props {
+  record: Array<Array<DetailGameRecord>>;
+  matchingMode: number;
+  matchingTeamMode: number;
+  maxDamage: number;
+}
 
 const Container = styled.div`
   height: auto;
@@ -26,7 +34,7 @@ const RankContainer = styled.div`
   }
 `;
 
-const GameInfoDetail = ({ record, matchingMode, matchingTeamMode, maxDamage }) => {
+const GameInfoDetail = ({ record, matchingMode, matchingTeamMode, maxDamage }: Props) => {
   return (
     <Container>
       <DetailHeader matchingTeamMode={matchingTeamMode} />

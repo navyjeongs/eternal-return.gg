@@ -1,4 +1,9 @@
 import styled from "styled-components";
+
+interface Props {
+  routeIdOfStart: number;
+}
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -22,7 +27,7 @@ const Explain = styled(RouteId)`
   }
 `;
 
-const GameRoute = ({ routeIdOfStart }) => {
+const GameRoute = ({ routeIdOfStart }: Props) => {
   return (
     <Container>
       <Wrapper>

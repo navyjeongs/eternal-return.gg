@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+  damageToPlayer: number;
+}
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -25,7 +29,7 @@ const Explain = styled(Damage)`
   }
 `;
 
-const GameDamage = ({ damageToPlayer }) => {
+const GameDamage = ({ damageToPlayer }: Props) => {
   return (
     <Container>
       <Wrapper>

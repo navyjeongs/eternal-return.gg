@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+interface Props {
+  traitFirstCore: number;
+  traitFirstSub: [number, number] | [];
+  traitSecondSub: [number, number] | [];
+  matchingMode: number;
+}
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -33,7 +40,7 @@ const SubTrait = styled.img`
   }
 `;
 
-const GameTrait = ({ traitFirstCore, traitFirstSub, traitSecondSub, matchingMode }) => {
+const GameTrait = ({ traitFirstCore, traitFirstSub, traitSecondSub, matchingMode }: Props) => {
   return (
     <Container>
       <FirstTrait>

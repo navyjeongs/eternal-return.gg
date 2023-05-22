@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+  matchingTeamMode: number;
+}
+
 const Container = styled.div`
   width: 100%;
   display: grid;
@@ -32,7 +36,7 @@ const List = styled.div`
   }
 `;
 
-const DetailHeader = ({ matchingTeamMode }) => {
+const DetailHeader = ({ matchingTeamMode }: Props) => {
   return (
     <Container>
       <List>순위</List>

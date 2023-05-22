@@ -1,8 +1,18 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { DetailGameRecord } from "../../../types/interface";
 
-const GraphAnimation = (width) => keyframes`
+interface Props {
+  data: Array<DetailGameRecord>;
+  maxDamage: number;
+  matchingTeamMode: number;
+}
+
+interface HandleSearchUser {
+  (e: React.MouseEvent<HTMLDivElement>, name: string): void;
+}
+
+const GraphAnimation = (width: string) => keyframes`
   0% {
     width: 0%;
     color: var(--color__txt);
@@ -106,7 +116,7 @@ const StandardGraph = styled.div`
   height: 1.5rem;
 `;
 
-const InnerGraph = styled.div`
+const InnerGraph = styled.div<{ w: string }>`
   height: 1.5rem;
   width: ${(prop) => prop.w};
   background-color: #003049;
@@ -166,10 +176,10 @@ const EquipImg = styled.img`
   }
 `;
 
-const DetailUserInfo = ({ data, maxDamage, matchingTeamMode }) => {
+const DetailUserInfo = ({ data, maxDamage, matchingTeamMode }: Props) => {
   const navigate = useNavigate();
 
-  const handleMoveSearchUser = (e, name) => {
+  const handleMoveSearchUser: HandleSearchUser = (e, name) => {
     navigate(`/user/${name}`);
   };
 

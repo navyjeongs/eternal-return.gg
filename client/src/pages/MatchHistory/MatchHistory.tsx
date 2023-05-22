@@ -40,6 +40,7 @@ export interface StatRecord {
   traitSecondSub: [] | [number, number];
   mmrAfter?: number;
   mmrGain?: number;
+  userNum: number;
 }
 
 interface AddDetail {

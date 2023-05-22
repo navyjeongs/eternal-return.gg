@@ -5,9 +5,9 @@ interface Props {
   gameRank: number;
   matchingMode: number;
   matchingTeamMode: number;
-  playingDate: number;
+  playingDate: string;
   escapeState: number;
-  playTime: number;
+  playTime: string;
 }
 
 interface NormalRankProps extends Pick<Props, "gameRank" | "escapeState"> {}

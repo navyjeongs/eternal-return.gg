@@ -16,7 +16,7 @@ interface NextRecord {
   recordNumber: number;
 }
 
-interface AddDetail {
+export interface AddDetail {
   isOpen: boolean;
   isLoad: boolean;
   record: Array<Array<DetailGameRecord>> | [];
@@ -197,8 +197,6 @@ const MatchHistory = () => {
   if (getUserMatchHistory.isError) {
     return <Error>최근 90일내의 플레이 게임이 존재하지 않습니다.</Error>;
   }
-
-  console.log("isOpenDetail", isOpenDetail);
 
   // isOpenDetail이 undefined가 아닐 때만
   return (

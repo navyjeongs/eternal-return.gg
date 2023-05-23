@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+  equipment: [number, number, number, number, number, number];
+}
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 5rem);
@@ -22,7 +26,7 @@ const Equip = styled.img`
   }
 `;
 
-const GameEquipment = ({ equipment }) => {
+const GameEquipment = ({ equipment }: Props) => {
   return (
     <Container>
       <Equip src={`/img/item/${equipment[0]}.png`} />

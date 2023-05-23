@@ -19,7 +19,7 @@ import { GameRecord } from "../../types/interface";
 interface Props {
   matchHistory: Array<GameRecord>;
   isOpenDetail: OpenDetail;
-  setIsOpenDetail: React.Dispatch<React.SetStateAction<OpenDetail | undefined>>;
+  setIsOpenDetail: React.Dispatch<React.SetStateAction<OpenDetail>>;
   isClickSpecificCharacter: IsClick;
 }
 

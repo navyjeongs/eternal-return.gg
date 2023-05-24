@@ -197,7 +197,7 @@ const Header = () => {
           <MenuContainer>
             <Menu>
               <Item onClick={() => navigate("/food/route")}> 음식 루트 생성기</Item>
-              <Item onClick={() => alert("서비스 준비중입니다.")}>루트 검색</Item>
+              <Item onClick={() => navigate("/game/routes")}>루트 검색</Item>
               <Item>
                 <SearchForm onSubmit={handleSearchName}>
                   <SearchInput value={searchName} onChange={setSearchName} />

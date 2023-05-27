@@ -51,6 +51,8 @@ app.get("/api/detailgame/:gameid", detailGameRoutes);
 // 선택된 지역만 가져오기
 app.get("/api/routepath/:route", gameRouteRoutes);
 
+app.get("/api/routepath/detail/:route", gameRouteRoutes);
+
 app.get("/api/freecharacter", freeCharacterRoutes);
 
 /*

@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import useInput from "@src/hooks/useInput";
 import CommonInput from "@src/components/common/CommonInput";
+import axios, { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -55,12 +57,19 @@ const SearchSubmitBtn = styled.button.attrs(() => ({
 `;
 
 const SearchRoute = () => {
+  const navigate = useNavigate();
+
   const [randImgNum, setRandImgNum] = useState(Math.floor(Math.random() * 22)); // 0 ~ 사진 크기만큼의 랜덤 숫자 생성
 
   const [routeId, setRouteId] = useInput("");
 
   const handleSearchRoute = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
     e.preventDefault();
+    if (routeId === "") {
+      alert("루트를 입력해주세요.");
+    } else {
+      navigate(`/game/route/${routeId}`);
+    }
   };
 
   return (

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { AreaMaterial } from "../../material/areaMaterialItem";
+import { AreaMaterial } from "../../constants/areaMaterialItem";
 
 const ImgContainer = styled.div`
   display: flex;

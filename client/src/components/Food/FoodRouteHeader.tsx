@@ -3,7 +3,7 @@ import { produce } from "immer";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import CommonInput from "../common/CommonInput";
-import { AreaMaterial } from "../../material/areaMaterialItem";
+import { AreaMaterial } from "../../constants/areaMaterialItem";
 import { RoutePath } from "./FoodRouteMain";
 import useInput from "../../hooks/useInput";
 

@@ -6,9 +6,9 @@ import { Helmet } from "react-helmet-async";
 import FoodRouteHeader from "./FoodRouteHeader";
 import FoodPolygon from "./FoodPolygon";
 
-import { foodMaterial } from "../../material/foodMaterial";
-import { AreaMaterial, areaMaterialItem } from "../../material/areaMaterialItem";
-import { HPFood, MPFood, foodHP, foodMP } from "../../material/foodList";
+import { foodMaterial } from "../../constants/foodMaterial";
+import { AreaMaterial, areaMaterialItem } from "../../constants/areaMaterialItem";
+import { HPFood, MPFood, foodHP, foodMP } from "../../constants/foodList";
 
 interface MakeItemImgProps {
   code: number;

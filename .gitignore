@@ -4,9 +4,10 @@
 /client/public/img
 /client/src/assets
 /client/dist
-
-/client/src/material
-
+/client/src/constants/foodList.ts
+/client/src/constants/foodMaterial.ts
+/client/src/constants/character.ts
+/client/src/constants/areaMaterialItem.ts
 ## server
 /server/node_modules
 /server/.env

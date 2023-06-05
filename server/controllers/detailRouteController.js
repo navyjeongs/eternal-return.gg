@@ -54,6 +54,7 @@ const getRoute = async (route) => {
     title: recommendWeaponRoute.title,
     userNickname: recommendWeaponRoute.userNickname,
     weaponType: recommendWeaponRoute.weaponType,
+    characterCode: recommendWeaponRoute.characterCode,
     equipment,
     paths,
     skillPaths,
